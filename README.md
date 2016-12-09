@@ -1,4 +1,3 @@
 # tomcat_okram
 
-TODO: Enter the cookbook description here.
-
+This cookbook install tomcat as a service using systemd. Its wrriten to support CentOS platform
