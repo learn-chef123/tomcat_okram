@@ -1,0 +1,7 @@
+default['tomcat']['user'] = 'tomcat'
+default['tomcat']['group'] = 'tomcat'
+default['tomcat']['user_home'] = '/opt/tomcat'
+default['tomcat']['user_shell'] = '/bin/false'
+default['tomcat']['install_dir'] = '/opt'
+default['tomcat']['shell'] = '/bin/false'
+default['tomcat']['version'] = '8.5.9'

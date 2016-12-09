@@ -5,30 +5,22 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 
-group 'tomcat'
+group node['tomcat']['group']
 
-user 'tomcat' do
-  gid 'tomcat'
-  home '/opt/tomcat'
-  shell '/bin/faslse'
+user node['tomcat']['user'] do
+  gid node['tomcat']['group']
+  home node['tomcat']['user_home']
+  shell node['tomcat']['user_shell']
 end
 
 ark 'tomcat' do
-  url 'http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.9/bin/apache-tomcat-8.5.9.tar.gz'
+  url "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v#{node['tomcat']['version']}/bin/apache-tomcat-#{node['tomcat']['version']}.tar.gz"
   action :put
-  path '/opt'
-  owner 'tomcat'
-  group 'tomcat'
+  path node['tomcat']['install_dir']
+  owner node['tomcat']['user']
+  group node['tomcat']['group']
 end
 
-
-%w[ /etc/systemd /etc/systemd/system ].each do |path|
-  directory path do
-    owner 'root'
-    group 'root'
-    mode '0755'
-  end
-end
 
 template '/etc/systemd/system/tomcat.service' do
   source 'tomcat.service.erb'
