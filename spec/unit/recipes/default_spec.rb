@@ -16,5 +16,14 @@ describe 'tomcat_okram::default' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
+
+    it 'create the tomcat user' do
+      expect(chef_run).to create_user('tomcat')
+    end
+
+    it 'creats the tomcat group'
+
+    it 'create the tomcat systemd file'
+
   end
 end
